@@ -58,8 +58,8 @@ DEFAULT_UNIPROT_FEATURE_TYPES = UNIPROT_FEATURE_TYPES
 # hatch pattern (every step, since the colour is then the cluster's).
 UNIPROT_TYPE_STYLE = {
     "Domain": {"color": "#C44E52", "hatch": ""},
-    "Zinc finger": {"color": "#D9777B", "hatch": "///"},
-    "DNA binding": {"color": "#8E2A2E", "hatch": "xxx"},
+    "Zinc finger": {"color": "#D9777B", "hatch": "//"},
+    "DNA binding": {"color": "#8E2A2E", "hatch": "xx"},
 }
 
 CLUSTER_COLORS = [
@@ -358,9 +358,24 @@ def _bar(
         alpha=alpha,
         zorder=2,
         linestyle=linestyle,
-        hatch=hatch or None,
     )
     ax.add_patch(rect)
+    if hatch:
+        # Hatch on a separate, borderless overlay: the solid outline of `rect` keeps the
+        # start/end of the domain readable, and the hatch stays light.
+        ax.add_patch(
+            plt.Rectangle(
+                (int(start), y - h / 2),
+                width,
+                h,
+                fill=False,
+                edgecolor="white",
+                linewidth=0,
+                alpha=0.55,
+                zorder=2.1,
+                hatch=hatch,
+            )
+        )
 
 
 def _hatch(domain: dict) -> str:

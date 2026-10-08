@@ -51,9 +51,9 @@ SOURCE_COLORS = {
 }
 
 # UniProt feature types written by fetch_tf_dataset.py (column `feature_type`, only filled for
-# source == "uniprot"). Zinc fingers are numerous (one row per finger): keep them opt-in.
+# source == "uniprot"). All types are selected by default in the sidebar.
 UNIPROT_FEATURE_TYPES = ["Domain", "Zinc finger", "DNA binding"]
-DEFAULT_UNIPROT_FEATURE_TYPES = ["Domain"]
+DEFAULT_UNIPROT_FEATURE_TYPES = UNIPROT_FEATURE_TYPES
 # Visual mark of each UniProt feature type: a colour variation of the UniProt red (step 1) and a
 # hatch pattern (every step, since the colour is then the cluster's).
 UNIPROT_TYPE_STYLE = {

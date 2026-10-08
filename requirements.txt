@@ -1,0 +1,5 @@
+# Runtime dependencies of app.py (Streamlit Community Cloud reads this file).
+streamlit==1.64.0
+pandas==3.0.6
+matplotlib==3.11.2
+plotly==7.1.0
